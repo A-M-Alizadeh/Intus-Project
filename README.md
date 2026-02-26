@@ -108,3 +108,11 @@ VITE_API_BASE_URL=https://<your-space>.hf.space npm run build
 - Upload supports PNG and JPG/JPEG; output is returned as PNG base64.
 - Current backend is intentionally lightweight and uses SQLite by default (no required Postgres container).
 - a simple change to triger gh action
+
+## Branches
+
+- `main`: original submission flow (phase simulation only).
+- `feature/organ-detection`: adds `POST /analyze` and the frontend Analyze action.
+- For online verification, keep both branches deployable:
+  - `main` can point to the original GH Pages + HF Space.
+  - `feature/organ-detection` should use separate GH Pages/HF targets (recommended).
