@@ -1,10 +1,11 @@
 ---
-title: Intus Project
+title: Intus Project Organ Detector
 emoji: 🩺
 colorFrom: blue
 colorTo: green
 sdk: docker
 pinned: false
+short_description: Feature branch with organ detection endpoint
 ---
 
 # Intus – MedTech Mini Web-App
