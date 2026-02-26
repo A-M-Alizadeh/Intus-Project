@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const emit = defineEmits(['process', 'preview']);
+const emit = defineEmits(['process', 'preview', 'analyze']);
 const fileName = ref("Nessun file selezionato");
 
 /**
@@ -24,6 +24,15 @@ const handleSubmit = (event) => {
   const formData = new FormData(formElement);
   // Sends image + phase selection to the Django backend.
   emit('process', formData);
+};
+
+/**
+ * Build FormData from the current form and request detection analysis.
+ */
+const handleAnalyze = (event) => {
+  const formElement = event.target.form;
+  const formData = new FormData(formElement);
+  emit('analyze', formData);
 };
 </script>
 
@@ -55,7 +64,12 @@ const handleSubmit = (event) => {
         </label>
       </div>
 
-      <button type="submit" class="btn-blue">Elabora immagine</button>
+      <div class="actions">
+        <button type="submit" class="btn-blue">Elabora immagine</button>
+        <button type="button" class="btn-outline action-secondary" @click="handleAnalyze">
+          Analyze
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -109,6 +123,13 @@ const handleSubmit = (event) => {
   cursor: pointer;
   background: #fff;
   font-size: 0.9rem;
+}
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+.action-secondary {
+  color: #1e293b;
 }
 .file-name {
   font-size: 0.85rem;
