@@ -13,7 +13,7 @@ DEBUG = os.getenv("DEBUG", "0").lower() in ("1", "true", "yes")
 ALLOWED_HOSTS = (
     os.getenv("ALLOWED_HOSTS", "*").split(",")
     if os.getenv("ALLOWED_HOSTS")
-    else ["*"]
+    else [".hf.space", "localhost", "127.0.0.1"]
 )
 
 if os.getenv("USE_POSTGRES", "0").lower() in ("1", "true", "yes"):
@@ -27,3 +27,7 @@ if os.getenv("USE_POSTGRES", "0").lower() in ("1", "true", "yes"):
             "PORT": os.getenv("POSTGRES_PORT", "5432"),
         }
     }
+
+# Hugging Face Spaces renders the app in an iframe on huggingface.co.
+# Allow framing to avoid "refused to connect" in the Space UI.
+X_FRAME_OPTIONS = "ALLOWALL"
