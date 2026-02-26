@@ -1,3 +1,12 @@
+---
+title: Intus Project
+emoji: 🩺
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+---
+
 # Intus – MedTech Mini Web-App
 
 This repository contains:
